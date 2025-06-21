@@ -1,0 +1,14 @@
+{
+  "nodes": [
+    { "id": "東京湾マリーナ", "layer": "Micro" },
+    { "id": "マリーナ内活動", "layer": "Affordance" },
+    { "id": "リズムのある街並み", "layer": "Impact" },
+    { "id": "自己実現ある暮らしの促進", "layer": "Goal" }
+  ],
+
+  "links": [
+    { "source": "東京湾マリーナ",       "target": "マリーナ内活動" },
+    { "source": "マリーナ内活動",     "target": "リズムのある街並み" },
+    { "source": "リズムのある街並み", "target": "自己実現ある暮らしの促進" }
+  ]
+}
