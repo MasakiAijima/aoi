@@ -13,12 +13,9 @@ function polarToCartesian(angle, radius) {
 }
 
 function draw({nodes, links}) {
-  // 1. 各 layer ごとに配列を作り、角度を均等割り当て
-  const nodesByLayer = d3.group(nodes, d => d.layer);
-  nodes.forEach(d => {
-    const siblings = nodesByLayer.get(d.layer);
-    const idx = siblings.indexOf(d);
-    const angle = 2 * Math.PI * idx / siblings.length;
+  // 1. ノード全体で角度を均等割り当て
+  nodes.forEach((d, i) => {
+    const angle = 2 * Math.PI * i / nodes.length;
     d.angle = angle;
     d.radius = layerRadius(d.layer);
     [d.x, d.y] = polarToCartesian(angle, d.radius);
