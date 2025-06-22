@@ -1,5 +1,5 @@
 const svg = d3.select("#viz");
-const size = 350;
+const size = 500; // increase overall radius for more spacing between nodes
 
 // レイヤー構造（外側から内側へ）
 const layers = ["Micro", "Affordance", "Impact", "Goal"];
@@ -13,6 +13,14 @@ const layerRadiusByName = {
   Affordance: (ringRadii[1] + ringRadii[2]) / 2,
   Impact: (ringRadii[2] + ringRadii[3]) / 2,
   Goal: 0
+};
+
+// フォントサイズをレイヤー毎に指定
+const fontSizeByLayer = {
+  Micro: 12,
+  Affordance: 14,
+  Impact: 16,
+  Goal: 18
 };
 
 // カテゴリごとの色設定
@@ -103,6 +111,7 @@ function draw({ nodes, links }) {
     .attr("dy", "-0.8em")
     .attr("text-anchor", "middle")
     .attr("fill", "#999")
+    .style("font-size", d => `${fontSizeByLayer[d.layer]}px`)
     .style("pointer-events", "none");
 
   // 凡例
