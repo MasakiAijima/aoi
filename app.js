@@ -3,9 +3,17 @@ const size = 350;
 
 // レイヤー構造（外側から内側へ）
 const layers = ["Micro", "Affordance", "Impact", "Goal"];
-const layerRadius = d3.scalePoint()
-  .domain(layers)
-  .range([size, 80]);
+
+// 各レイヤーの中心半径（白とグレーの帯の中央）
+// 最内層の Goal は円の中心に配置する
+const step = (size - 80) / (layers.length - 1);
+const ringRadii = layers.map((_, i) => size - i * step);
+const layerRadiusByName = {
+  Micro: (ringRadii[0] + ringRadii[1]) / 2,
+  Affordance: (ringRadii[1] + ringRadii[2]) / 2,
+  Impact: (ringRadii[2] + ringRadii[3]) / 2,
+  Goal: 0
+};
 
 // カテゴリごとの色設定
 const categoryColor = d3.scaleOrdinal()
@@ -33,7 +41,7 @@ function draw({ nodes, links }) {
   const ringG = svg.append("g").attr("class", "rings");
   layers.forEach((layer, i) => {
     ringG.append("circle")
-      .attr("r", layerRadius(layer))
+      .attr("r", ringRadii[i])
       .attr("fill", i % 2 === 0 ? "#ffffff" : "#f2f2f2");
   });
 
@@ -44,7 +52,7 @@ function draw({ nodes, links }) {
     const index = group.indexOf(d);
     const angle = 2 * Math.PI * index / group.length;
     d.angle = angle;
-    d.radius = layerRadius(d.layer);
+    d.radius = layerRadiusByName[d.layer];
     [d.x, d.y] = polarToCartesian(angle, d.radius);
   });
 
