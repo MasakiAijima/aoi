@@ -10,7 +10,6 @@ svg text {
 
 /* ノードの円形スタイル */
 .node circle {
-  r: 6px;
   stroke: #fff;
   stroke-width: 1.5px;
 }
