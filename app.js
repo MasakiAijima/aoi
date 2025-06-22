@@ -61,13 +61,16 @@ function draw({ nodes, links }) {
     .angle(d => d.angle)
     .radius(d => d.radius);
 
+  const filteredLinks = links.map(l => ({
+      source: nodes.find(n => n.id === l.source),
+      target: nodes.find(n => n.id === l.target)
+    }))
+    .filter(l => l.source && l.target);
+
   svg.append("g")
     .attr("class", "links")
     .selectAll("path")
-    .data(links.map(l => ({
-      source: nodes.find(n => n.id === l.source),
-      target: nodes.find(n => n.id === l.target)
-    })))
+    .data(filteredLinks)
     .enter().append("path")
     .attr("d", linkGen)
     .attr("class", "link")
