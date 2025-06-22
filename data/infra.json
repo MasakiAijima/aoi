@@ -443,9 +443,8 @@
       "display_name": "テナント／人材の誘引力向上",
       "layer": "Impact",
       "category": "Financial"
-    }
+    },
     { "id": "Go-1", "display_name": "ワーカーの生産性", "layer": "Goal", "category": "Political" }
-
   ],
   "links": [
     {
