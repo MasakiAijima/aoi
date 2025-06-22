@@ -1,33 +1,44 @@
 :root {
-  --micro:       #b1e5a0;
-  --affordance:  #a6dfff;
-  --impact:      #d9cef6;
-  --goal:        #ffb347;
-  --link:        #999;
   font-family: "Noto Sans JP", sans-serif;
 }
 
+/* 全体スタイル */
 svg text {
   font-size: 12px;
   pointer-events: none;
 }
 
+/* ノードの円形スタイル */
 .node circle {
   r: 6px;
   stroke: #fff;
   stroke-width: 1.5px;
 }
-.node.micro       circle { fill: var(--micro); }
-.node.affordance  circle { fill: var(--affordance); }
-.node.impact      circle { fill: var(--impact); }
-.node.goal        circle { fill: var(--goal); }
 
+/* リンク線スタイル */
 .link {
   fill: none;
-  stroke: var(--link);
+  stroke: #999;
   stroke-width: 2px;
-  opacity: .45;
+  opacity: 0.4;
 }
 
-.link.highlight   { stroke-width: 3px; opacity: .9; }
-.node.highlight circle { stroke-width: 3px; }
+/* ホバー時のハイライト */
+.link.highlight {
+  stroke: #333;
+  stroke-width: 3px;
+  opacity: 0.9;
+}
+.node.highlight circle {
+  stroke-width: 3px;
+}
+
+/* カテゴリ凡例テキスト */
+.legend text {
+  font-size: 12px;
+}
+
+/* 背景リングのスタイル（必要なら指定） */
+.rings circle {
+  stroke: none;
+}
