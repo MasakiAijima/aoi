@@ -1,5 +1,30 @@
 const svg = d3.select("#viz");
 const size = 800; // increase overall radius for more spacing between nodes
+const datasetSelector = d3.select("#dataset-selector");
+const titleElem = d3.select("#dataset-title");
+const datasets = ["data/infra.json", "data/sample.json"];
+Promise.all(datasets.map(p => d3.json(p))).then(ds => {
+  ds.forEach((data, i) => {
+    datasetSelector.append("option")
+      .attr("value", datasets[i])
+      .text(data.title || datasets[i]);
+  });
+  loadAndDraw(datasets[0]);
+});
+
+datasetSelector.on("change", function() {
+  loadAndDraw(this.value);
+});
+
+function loadAndDraw(path) {
+  d3.json(path).then(data => {
+    titleElem.text(data.title || path);
+    svg.selectAll("*").remove();
+    draw(data);
+  });
+}
+
+
 
 // レイヤー構造（外側から内側へ）
 const layers = ["Micro", "Affordance", "Impact", "Goal"];
@@ -43,7 +68,6 @@ const categoryColor = d3.scaleOrdinal()
   ]);
 
 // データ読み込み
-d3.json("data/infra.json").then(draw);
 
 function polarToCartesian(angle, radius) {
   return [
