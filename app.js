@@ -23,6 +23,14 @@ const fontSizeByLayer = {
   Goal: 18
 };
 
+// ノード半径をレイヤー毎に指定（中心に向かうほど大きくする）
+const nodeRadiusByLayer = {
+  Micro: 12,          // 現在の4倍の面積 -> 半径2倍
+  Affordance: 16,
+  Impact: 20,
+  Goal: 24
+};
+
 // カテゴリごとの色設定
 const categoryColor = d3.scaleOrdinal()
   .domain([
@@ -100,7 +108,7 @@ function draw({ nodes, links }) {
 
   // ノードの丸
   nodeG.append("circle")
-    .attr("r", 6)
+    .attr("r", d => nodeRadiusByLayer[d.layer])
     .attr("fill", d => categoryColor(d.category))
     .attr("stroke", "#fff")
     .attr("stroke-width", 1.5);
