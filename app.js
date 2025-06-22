@@ -1,13 +1,13 @@
 const svg = d3.select("#viz");
 const size = 350;
 
-// レイヤーと順序を定義（円環の内外順）
+// レイヤー構造（外側から内側へ）
 const layers = ["Micro", "Affordance", "Impact", "Goal"];
 const layerRadius = d3.scalePoint()
   .domain(layers)
-  .range([size, 80]); // 外→内
+  .range([size, 80]);
 
-// カテゴリ別色スケール
+// カテゴリごとの色設定
 const categoryColor = d3.scaleOrdinal()
   .domain([
     "Natural", "Financial", "Manufactured", "Digital",
@@ -18,7 +18,7 @@ const categoryColor = d3.scaleOrdinal()
     "#FFF3A0", "#FFCCA2", "#F4A9B8", "#D8C8FF"
   ]);
 
-// データ読み込み → 描画関数へ
+// データ読み込み
 d3.json("data/infra.json").then(draw);
 
 function polarToCartesian(angle, radius) {
@@ -29,7 +29,7 @@ function polarToCartesian(angle, radius) {
 }
 
 function draw({ nodes, links }) {
-  // 背景リングを描画（レイヤー数分）
+  // 背景の同心円を描画
   const ringG = svg.append("g").attr("class", "rings");
   layers.forEach((layer, i) => {
     ringG.append("circle")
@@ -37,14 +37,12 @@ function draw({ nodes, links }) {
       .attr("fill", i % 2 === 0 ? "#ffffff" : "#f2f2f2");
   });
 
-  // ノードをレイヤーごとにグループ化
+  // 各レイヤーごとのノードをグループ化して、角度を均等割当て
   const nodesByLayer = d3.group(nodes, d => d.layer);
-
-  // 各ノードに角度と位置を割り当て
   nodes.forEach(d => {
-    const sameLayer = nodesByLayer.get(d.layer);
-    const index = sameLayer.indexOf(d);
-    const angle = 2 * Math.PI * index / sameLayer.length;
+    const group = nodesByLayer.get(d.layer);
+    const index = group.indexOf(d);
+    const angle = 2 * Math.PI * index / group.length;
     d.angle = angle;
     d.radius = layerRadius(d.layer);
     [d.x, d.y] = polarToCartesian(angle, d.radius);
@@ -81,21 +79,20 @@ function draw({ nodes, links }) {
     .on("mouseover", highlight)
     .on("mouseout", clearHighlight);
 
+  // ノードの丸
   nodeG.append("circle")
     .attr("r", 6)
     .attr("fill", d => categoryColor(d.category))
     .attr("stroke", "#fff")
     .attr("stroke-width", 1.5);
 
+  // ノードのテキスト（常に横書き）
   nodeG.append("text")
-    .attr("dy", "0.35em")
     .text(d => d.id)
-    .attr("text-anchor", d => (d.angle > Math.PI ? "end" : "start"))
-    .attr("transform", d => {
-      const rot = d.angle * 180 / Math.PI - 90;
-      const offset = d.angle > Math.PI ? -12 : 12;
-      return `rotate(${rot}) translate(${offset},0)`;
-    });
+    .attr("dy", "-0.8em")
+    .attr("text-anchor", "middle")
+    .attr("fill", "#999")
+    .style("pointer-events", "none");
 
   // 凡例
   const legend = svg.append("g")
@@ -103,8 +100,7 @@ function draw({ nodes, links }) {
     .attr("transform", `translate(${size + 60},${-size})`);
 
   categoryColor.domain().forEach((cat, i) => {
-    const g = legend.append("g")
-      .attr("transform", `translate(0, ${i * 24})`);
+    const g = legend.append("g").attr("transform", `translate(0, ${i * 24})`);
     g.append("circle")
       .attr("r", 8)
       .attr("fill", categoryColor(cat));
@@ -116,17 +112,21 @@ function draw({ nodes, links }) {
   });
 }
 
-// ノード・リンクのハイライト処理
+// ノード hover で強調
 function highlight(event, d) {
   svg.selectAll(".link").classed("highlight", l =>
     l.source.id === d.id || l.target.id === d.id
   ).attr("stroke-opacity", l =>
     l.source.id === d.id || l.target.id === d.id ? 0.9 : 0.2
   );
+
   d3.select(this).classed("highlight", true);
+  d3.select(this).select("text").attr("fill", "#000");
 }
 
+// hover 解除
 function clearHighlight() {
   svg.selectAll(".highlight").classed("highlight", false)
     .attr("stroke-opacity", 0.4);
+  svg.selectAll(".node text").attr("fill", "#999");
 }
