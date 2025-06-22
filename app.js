@@ -53,15 +53,58 @@ function draw({ nodes, links }) {
       .attr("fill", i % 2 === 0 ? "#ffffff" : "#f2f2f2");
   });
 
-  // 各レイヤーごとのノードをグループ化して、角度を均等割当て
+  // --- ノード配置計算 ---
   const nodesByLayer = d3.group(nodes, d => d.layer);
-  nodes.forEach(d => {
-    const group = nodesByLayer.get(d.layer);
-    const index = group.indexOf(d);
-    const angle = 2 * Math.PI * index / group.length;
+  const nodeById = new Map(nodes.map(d => [d.id, d]));
+
+  // Micro レイヤーはデータ順のまま配置
+  const microNodes = nodesByLayer.get("Micro") || [];
+  microNodes.forEach((d, i) => {
+    const angle = (2 * Math.PI * i) / microNodes.length;
     d.angle = angle;
     d.radius = layerRadiusByName[d.layer];
     [d.x, d.y] = polarToCartesian(angle, d.radius);
+  });
+
+  // Micro からのリンク情報をグループ化
+  const microLinks = links.filter(l => nodeById.get(l.source)?.layer === "Micro");
+  const microLinksByTarget = d3.group(microLinks, l => l.target);
+
+  // 指定レイヤーのノードを、リンク元ノードの平均角度順に並べる
+  function positionLayer(layer, inboundLinksByTarget) {
+    const layerNodes = nodesByLayer.get(layer) || [];
+    layerNodes.forEach(d => {
+      const linksToNode = inboundLinksByTarget.get(d.id) || [];
+      const angles = linksToNode.map(l => nodeById.get(l.source).angle);
+      d.sortAngle = angles.length ? d3.mean(angles) : null;
+    });
+    layerNodes.sort((a, b) => {
+      const aa = a.sortAngle ?? Infinity;
+      const bb = b.sortAngle ?? Infinity;
+      return aa - bb;
+    });
+    layerNodes.forEach((d, i) => {
+      const angle = (2 * Math.PI * i) / layerNodes.length;
+      d.angle = angle;
+      d.radius = layerRadiusByName[d.layer];
+      [d.x, d.y] = polarToCartesian(angle, d.radius);
+    });
+  }
+
+  // Affordance レイヤーを並べ替え
+  positionLayer("Affordance", microLinksByTarget);
+
+  // Affordance から Impact へのリンクを使って Impact を並べ替え
+  const affLinks = links.filter(l => nodeById.get(l.source)?.layer === "Affordance");
+  const affLinksByTarget = d3.group(affLinks, l => l.target);
+  positionLayer("Impact", affLinksByTarget);
+
+  // Goal レイヤー (中心) のノードを配置
+  const goalNodes = nodesByLayer.get("Goal") || [];
+  goalNodes.forEach(d => {
+    d.angle = 0;
+    d.radius = layerRadiusByName[d.layer];
+    [d.x, d.y] = polarToCartesian(0, d.radius);
   });
 
   // リンク描画
