@@ -96,7 +96,7 @@ function draw({ nodes, links }) {
 
   // ノードのテキスト（常に横書き）
   nodeG.append("text")
-    .text(d => d.id)
+    .text(d => d.display_name)
     .attr("dy", "-0.8em")
     .attr("text-anchor", "middle")
     .attr("fill", "#999")

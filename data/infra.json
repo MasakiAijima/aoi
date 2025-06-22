@@ -1,26 +1,108 @@
 {
   "nodes": [
-    { "id": "東京湾マリーナ", "layer": "Micro",       "category": "Natural" },
-    { "id": "地下鉄駅",       "layer": "Micro",       "category": "Manufactured" },
-    { "id": "住宅地",         "layer": "Micro",       "category": "Human" },
-    { "id": "マリーナ内活動", "layer": "Affordance",  "category": "Social" },
-    { "id": "交通ハブ",       "layer": "Affordance",  "category": "Digital" },
-    { "id": "生活利便",       "layer": "Affordance",  "category": "Financial" },
-    { "id": "リズムのある街並み", "layer": "Impact", "category": "Cultural" },
-    { "id": "都市の回遊性向上",   "layer": "Impact", "category": "Cultural" },
-    { "id": "コミュニティ活性",   "layer": "Impact", "category": "Social" },
-    { "id": "自己実現ある暮らしの促進", "layer": "Goal", "category": "Human" },
-    { "id": "都市の持続可能性", "layer": "Goal", "category": "Political" }
+    {
+      "id": "Mi-1",
+      "display_name": "東京湾マリーナ",
+      "layer": "Micro",
+      "category": "Natural"
+    },
+    {
+      "id": "Mi-2",
+      "display_name": "地下鉄駅",
+      "layer": "Micro",
+      "category": "Manufactured"
+    },
+    {
+      "id": "Mi-3",
+      "display_name": "住宅地",
+      "layer": "Micro",
+      "category": "Human"
+    },
+    {
+      "id": "Af-1",
+      "display_name": "マリーナ内活動",
+      "layer": "Affordance",
+      "category": "Social"
+    },
+    {
+      "id": "Af-2",
+      "display_name": "交通ハブ",
+      "layer": "Affordance",
+      "category": "Digital"
+    },
+    {
+      "id": "Af-3",
+      "display_name": "生活利便",
+      "layer": "Affordance",
+      "category": "Financial"
+    },
+    {
+      "id": "Im-1",
+      "display_name": "リズムのある街並み",
+      "layer": "Impact",
+      "category": "Cultural"
+    },
+    {
+      "id": "Im-2",
+      "display_name": "都市の回遊性向上",
+      "layer": "Impact",
+      "category": "Cultural"
+    },
+    {
+      "id": "Im-3",
+      "display_name": "コミュニティ活性",
+      "layer": "Impact",
+      "category": "Social"
+    },
+    {
+      "id": "Go-1",
+      "display_name": "自己実現ある暮らしの促進",
+      "layer": "Goal",
+      "category": "Human"
+    },
+    {
+      "id": "Go-2",
+      "display_name": "都市の持続可能性",
+      "layer": "Goal",
+      "category": "Political"
+    }
   ],
   "links": [
-    { "source": "東京湾マリーナ", "target": "マリーナ内活動" },
-    { "source": "地下鉄駅",     "target": "交通ハブ" },
-    { "source": "住宅地",       "target": "生活利便" },
-    { "source": "マリーナ内活動", "target": "リズムのある街並み" },
-    { "source": "交通ハブ",       "target": "都市の回遊性向上" },
-    { "source": "生活利便",       "target": "コミュニティ活性" },
-    { "source": "リズムのある街並み", "target": "自己実現ある暮らしの促進" },
-    { "source": "都市の回遊性向上",   "target": "都市の持続可能性" },
-    { "source": "コミュニティ活性",   "target": "都市の持続可能性" }
+    {
+      "source": "Mi-1",
+      "target": "Af-1"
+    },
+    {
+      "source": "Mi-2",
+      "target": "Af-2"
+    },
+    {
+      "source": "Mi-3",
+      "target": "Af-3"
+    },
+    {
+      "source": "Af-1",
+      "target": "Im-1"
+    },
+    {
+      "source": "Af-2",
+      "target": "Im-2"
+    },
+    {
+      "source": "Af-3",
+      "target": "Im-3"
+    },
+    {
+      "source": "Im-1",
+      "target": "Go-1"
+    },
+    {
+      "source": "Im-2",
+      "target": "Go-2"
+    },
+    {
+      "source": "Im-3",
+      "target": "Go-2"
+    }
   ]
 }
