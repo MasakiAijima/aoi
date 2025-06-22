@@ -1,5 +1,5 @@
 const svg = d3.select("#viz");
-const size = 500; // increase overall radius for more spacing between nodes
+const size = 800; // increase overall radius for more spacing between nodes
 
 // レイヤー構造（外側から内側へ）
 const layers = ["Micro", "Affordance", "Impact", "Goal"];
