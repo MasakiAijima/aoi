@@ -1,5 +1,5 @@
 {
-  "title": "Anatomy of Infrastructure",
+  "title": "新宿の高層ビル",
   "nodes": [
     {
       "id": "Mi-1",
@@ -445,7 +445,7 @@
       "layer": "Impact",
       "category": "Financial"
     },
-    { "id": "Go-1", "display_name": "ワーカーの生産性", "layer": "Goal", "category": "Political" }
+    { "id": "Go-1", "display_name": "入居テナント生産性の最大化", "layer": "Goal", "category": "Political" }
   ],
   "links": [
     {
