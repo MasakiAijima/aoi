@@ -21,14 +21,8 @@ async function init() {
 init();
 
 async function fetchDatasets() {
-  const res = await fetch("data/");
-  const text = await res.text();
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(text, "text/html");
-  return Array.from(doc.querySelectorAll("a"))
-    .map(a => a.getAttribute("href"))
-    .filter(h => h && h.endsWith(".json"))
-    .map(h => `data/${h}`);
+  const files = await d3.json("data/datasets.json");
+  return files.map(f => `data/${f}`);
 }
 
 function loadAndDraw(path) {
