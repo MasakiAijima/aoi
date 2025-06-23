@@ -2,19 +2,34 @@ const svg = d3.select("#viz");
 const size = 800; // increase overall radius for more spacing between nodes
 const datasetSelector = d3.select("#dataset-selector");
 const titleElem = d3.select("#dataset-title");
-const datasets = ["data/infra.json", "data/sample.json"];
-Promise.all(datasets.map(p => d3.json(p))).then(ds => {
-  ds.forEach((data, i) => {
-    datasetSelector.append("option")
-      .attr("value", datasets[i])
-      .text(data.title || datasets[i]);
+async function init() {
+  const datasets = await fetchDatasets();
+  Promise.all(datasets.map(p => d3.json(p))).then(ds => {
+    ds.forEach((data, i) => {
+      datasetSelector.append("option")
+        .attr("value", datasets[i])
+        .text(data.title || datasets[i]);
+    });
+    loadAndDraw(datasets[0]);
   });
-  loadAndDraw(datasets[0]);
-});
 
-datasetSelector.on("change", function() {
-  loadAndDraw(this.value);
-});
+  datasetSelector.on("change", function() {
+    loadAndDraw(this.value);
+  });
+}
+
+init();
+
+async function fetchDatasets() {
+  const res = await fetch("data/");
+  const text = await res.text();
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(text, "text/html");
+  return Array.from(doc.querySelectorAll("a"))
+    .map(a => a.getAttribute("href"))
+    .filter(h => h && h.endsWith(".json"))
+    .map(h => `data/${h}`);
+}
 
 function loadAndDraw(path) {
   d3.json(path).then(data => {
