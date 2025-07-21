@@ -715,6 +715,78 @@
     {
       "source": "Af-12",
       "target": "Im-8"
+    },
+    {
+      "source": "Mi-3",
+      "target": "Af-11"
+    },
+    {
+      "source": "Mi-6",
+      "target": "Af-2"
+    },
+    {
+      "source": "Mi-7",
+      "target": "Af-13"
+    },
+    {
+      "source": "Mi-10",
+      "target": "Af-6"
+    },
+    {
+      "source": "Mi-11",
+      "target": "Af-5"
+    },
+    {
+      "source": "Mi-12",
+      "target": "Af-11"
+    },
+    {
+      "source": "Mi-17",
+      "target": "Af-14"
+    },
+    {
+      "source": "Mi-18",
+      "target": "Af-11"
+    },
+    {
+      "source": "Mi-31",
+      "target": "Af-7"
+    },
+    {
+      "source": "Mi-40",
+      "target": "Af-15"
+    },
+    {
+      "source": "Mi-41",
+      "target": "Af-11"
+    },
+    {
+      "source": "Mi-42",
+      "target": "Af-5"
+    },
+    {
+      "source": "Mi-43",
+      "target": "Af-9"
+    },
+    {
+      "source": "Mi-44",
+      "target": "Af-9"
+    },
+    {
+      "source": "Mi-45",
+      "target": "Af-12"
+    },
+    {
+      "source": "Mi-46",
+      "target": "Af-13"
+    },
+    {
+      "source": "Mi-47",
+      "target": "Af-16"
+    },
+    {
+      "source": "Mi-48",
+      "target": "Af-18"
     }
   ]
 }
