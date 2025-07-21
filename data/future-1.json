@@ -1,0 +1,300 @@
+{
+  "title": "未来シナリオ：雑居化する超高層ビル群",
+  "nodes": [
+    {
+      "id": "Mi-1",
+      "display_name": "緑化屋上・屋上庭園",
+      "layer": "Micro",
+      "category": "Natural"
+    },
+    {
+      "id": "Mi-2",
+      "display_name": "雨水貯留・再利用タンク",
+      "layer": "Micro",
+      "category": "Natural"
+    },
+    {
+      "id": "Mi-3",
+      "display_name": "ダブルスキンファサードによる自然換気／日射遮蔽",
+      "layer": "Micro",
+      "category": "Natural"
+    },
+    {
+      "id": "Mi-4",
+      "display_name": "太陽光発電パネル（BIPV）",
+      "layer": "Micro",
+      "category": "Natural"
+    },
+    {
+      "id": "Mi-5",
+      "display_name": "低放射率（Low‑E）ガラスとライトシェルフによる昼光利用",
+      "layer": "Micro",
+      "category": "Natural"
+    },
+    {
+      "id": "Mi-6",
+      "display_name": "高反射舗装によるヒートアイランド緩和",
+      "layer": "Micro",
+      "category": "Natural"
+    },
+    {
+      "id": "Mi-7",
+      "display_name": "J‑REIT 等による資産証券化",
+      "layer": "Micro",
+      "category": "Financial"
+    },
+    {
+      "id": "Mi-8",
+      "display_name": "フレキシブルリース／サブスク型コワーキング",
+      "layer": "Micro",
+      "category": "Financial"
+    },
+    {
+      "id": "Mi-9",
+      "display_name": "グリーンボンド／サステナビリティ・リンクローン",
+      "layer": "Micro",
+      "category": "Financial"
+    },
+    {
+      "id": "Mi-10",
+      "display_name": "デポジットレス保証・キャッシュレス決済",
+      "layer": "Micro",
+      "category": "Financial"
+    },
+    {
+      "id": "Mi-11",
+      "display_name": "災害リスク保険・気候適応レジリエンス保険",
+      "layer": "Micro",
+      "category": "Financial"
+    },
+    {
+      "id": "Mi-12",
+      "display_name": "PPA による屋上太陽光売電収入",
+      "layer": "Micro",
+      "category": "Financial"
+    },
+    {
+      "id": "Mi-13",
+      "display_name": "免震装置（コラムヘッド型など）",
+      "layer": "Micro",
+      "category": "Manufactured"
+    },
+    {
+      "id": "Mi-14",
+      "display_name": "高速・省エネエレベーター",
+      "layer": "Micro",
+      "category": "Manufactured"
+    },
+    {
+      "id": "Mi-15",
+      "display_name": "ヘリポート／ドクターヘリ対応屋上",
+      "layer": "Micro",
+      "category": "Manufactured"
+    },
+    {
+      "id": "Mi-16",
+      "display_name": "非常用自家発電（燃料電池・ガスタービン）",
+      "layer": "Micro",
+      "category": "Manufactured"
+    },
+    {
+      "id": "Mi-17",
+      "display_name": "省エネ VRF 空調 & アイスストレージ",
+      "layer": "Micro",
+      "category": "Manufactured"
+    },
+    {
+      "id": "Mi-18",
+      "display_name": "低炭素コンクリート・プレキャスト外装",
+      "layer": "Micro",
+      "category": "Manufactured"
+    },
+    {
+      "id": "Mi-19",
+      "display_name": "大深度地下駐車場＋EV 充電スタンド",
+      "layer": "Micro",
+      "category": "Manufactured"
+    },
+    {
+      "id": "Mi-20",
+      "display_name": "BIM／デジタルツインによる FM（施設管理）",
+      "layer": "Micro",
+      "category": "Digital"
+    },
+    {
+      "id": "Mi-21",
+      "display_name": "ビル全域 5G & Wi‑Fi 6 メッシュ",
+      "layer": "Micro",
+      "category": "Digital"
+    },
+    {
+      "id": "Mi-22",
+      "display_name": "顔認証 & スマホ連携アクセスコントロール",
+      "layer": "Micro",
+      "category": "Digital"
+    },
+    {
+      "id": "Mi-23",
+      "display_name": "IoT センサー（CO₂・温湿度・在席）ネットワーク",
+      "layer": "Micro",
+      "category": "Digital"
+    },
+    {
+      "id": "Mi-24",
+      "display_name": "デジタルサイネージ & AR Way‑finding",
+      "layer": "Micro",
+      "category": "Digital"
+    },
+    {
+      "id": "Mi-25",
+      "display_name": "非接触エレベーター呼び出し",
+      "layer": "Micro",
+      "category": "Digital"
+    },
+    {
+      "id": "Mi-26",
+      "display_name": "テナント向けエネルギー・環境ダッシュボード",
+      "layer": "Micro",
+      "category": "Digital"
+    },
+    {
+      "id": "Mi-27",
+      "display_name": "ウェルネス認証対応の換気・照明",
+      "layer": "Micro",
+      "category": "Human"
+    },
+    {
+      "id": "Mi-28",
+      "display_name": "コワーキング／リラックスラウンジ",
+      "layer": "Micro",
+      "category": "Human"
+    },
+    {
+      "id": "Mi-29",
+      "display_name": "社員食堂・フィットネス・ナップポッド",
+      "layer": "Micro",
+      "category": "Human"
+    },
+    {
+      "id": "Mi-30",
+      "display_name": "ユニバーサルデザイン（点字・多目的トイレ）",
+      "layer": "Micro",
+      "category": "Human"
+    },
+    {
+      "id": "Mi-31",
+      "display_name": "メンタルヘルス相談室",
+      "layer": "Micro",
+      "category": "Human"
+    },
+    {
+      "id": "Mi-32",
+      "display_name": "定期避難／BCP 訓練",
+      "layer": "Micro",
+      "category": "Human"
+    },
+    {
+      "id": "Mi-33",
+      "display_name": "地域イベント／マルシェ用公開空地",
+      "layer": "Micro",
+      "category": "Social"
+    },
+    {
+      "id": "Mi-34",
+      "display_name": "帰宅困難者一時受入れ拠点",
+      "layer": "Micro",
+      "category": "Social"
+    },
+    {
+      "id": "Mi-35",
+      "display_name": "テナント横断の CSR / ボランティア",
+      "layer": "Micro",
+      "category": "Social"
+    },
+    {
+      "id": "Mi-36",
+      "display_name": "無料展望フロアの一般開放",
+      "layer": "Micro",
+      "category": "Social"
+    },
+    {
+      "id": "Mi-37",
+      "display_name": "アートギャラリー & ポップアップスペース",
+      "layer": "Micro",
+      "category": "Social"
+    },
+    {
+      "id": "Mi-38",
+      "display_name": "屋上緑化義務（東京都条例）",
+      "layer": "Micro",
+      "category": "Political"
+    },
+    {
+      "id": "Mi-39",
+      "display_name": "建築基準法の最新耐震等級適合",
+      "layer": "Micro",
+      "category": "Political"
+    },
+    {
+      "id": "Mi-40",
+      "display_name": "再開発特定地区による容積率緩和認定",
+      "layer": "Micro",
+      "category": "Political"
+    },
+    {
+      "id": "Mi-41",
+      "display_name": "BEMS・ZEB 支援補助金採択",
+      "layer": "Micro",
+      "category": "Political"
+    },
+    {
+      "id": "Mi-42",
+      "display_name": "テロ対策ガイドラインに準拠した警備動線",
+      "layer": "Micro",
+      "category": "Political"
+    },
+    {
+      "id": "Mi-43",
+      "display_name": "ネオンサイン × 和柄のロビーアート",
+      "layer": "Micro",
+      "category": "Cultural"
+    },
+    {
+      "id": "Mi-44",
+      "display_name": "季節イルミネーション（桜・七夕・紅葉）",
+      "layer": "Micro",
+      "category": "Cultural"
+    },
+    {
+      "id": "Mi-45",
+      "display_name": "茶室／書道体験コーナー",
+      "layer": "Micro",
+      "category": "Cultural"
+    },
+    {
+      "id": "Mi-46",
+      "display_name": "メタボリズム建築要素の継承",
+      "layer": "Micro",
+      "category": "Cultural"
+    },
+    {
+      "id": "Mi-47",
+      "display_name": "多言語サインシステム",
+      "layer": "Micro",
+      "category": "Cultural"
+    },
+    {
+      "id": "Mi-48",
+      "display_name": "地域祭事向け神輿収納／バルコニー",
+      "layer": "Micro",
+      "category": "Cultural"
+    },
+    {
+      "id": "Go-1",
+      "display_name": "雑居する居住者が互酬性を最大化させる場所",
+      "layer": "Goal",
+      "category": "Political"
+    }
+  ],
+  "links": []
+}
